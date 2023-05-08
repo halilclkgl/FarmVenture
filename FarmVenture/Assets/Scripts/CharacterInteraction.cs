@@ -1,41 +1,128 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterInteraction : MonoBehaviour
 {
-    private Field currentField; // Etkileþime giren tarla objesi
 
-    private void Update()
+    public Button digButton;
+    public Button plantButton;
+    public Button harvestButton;
+    public Button waterButton;
+    public GameObject panel;
+    private Field currentField;
+    private FarmManager farmManager;
+   
+    private void OnTriggerEnter(Collider other)
     {
-        if (currentField != null)
+        if (other.CompareTag("Field"))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            Field field = other.GetComponent<Field>();
+           farmManager = other.gameObject.GetComponent<FarmManager>();
+            if (field != null && farmManager != null && farmManager.isPurchased)
             {
-                currentField.Dig();
+                currentField = field;
+                UpdateUIButtons();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                currentField.Plant();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                currentField.Water();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                currentField.Harvest();
-            }
+        }   
+    }
+
+        private void OnTriggerExit(Collider other)
+    {
+   
+        if (other.CompareTag("Field") )
+        {
+            currentField = null;
+            ResetUIButtons();
         }
     }
 
-    public void SetCurrentField(Field field)
+    public void UpdateUIButtons()
     {
-        currentField = field;
+        if (currentField == null)
+        {
+            ResetUIButtons();
+            return;
+        }
+      
+        if (currentField.GetState() == FieldState.Empty)
+        {
+            panel.SetActive(true);
+            digButton.gameObject.SetActive(true);
+            plantButton.gameObject.SetActive(false);
+            harvestButton.gameObject.SetActive(false);
+            waterButton.gameObject.SetActive(false);
+        }
+        else if (currentField.GetState() == FieldState.Planted)
+        {
+            panel.SetActive(true);
+            digButton.gameObject.SetActive(false);
+            plantButton.gameObject.SetActive(true);
+            harvestButton.gameObject.SetActive(false);
+            waterButton.gameObject.SetActive(false);
+        }
+        else if (currentField.GetState() == FieldState.Watering)
+        {
+            panel.SetActive(true);
+            digButton.gameObject.SetActive(false);
+            plantButton.gameObject.SetActive(false);
+            harvestButton.gameObject.SetActive(true);
+            waterButton.gameObject.SetActive(false);
+        }
+        else if (currentField.GetState() == FieldState.Harvestable)
+        {
+            panel.SetActive(true);
+            digButton.gameObject.SetActive(false);
+            plantButton.gameObject.SetActive(false);
+            harvestButton.gameObject.SetActive(false);
+            waterButton.gameObject.SetActive(true);
+        }
     }
 
-    public void ClearCurrentField()
+    private void ResetUIButtons()
     {
-        currentField = null;
+        panel.SetActive(false);
+        digButton.gameObject.SetActive(false);
+        plantButton.gameObject.SetActive(false);
+        harvestButton.gameObject.SetActive(false);
+        waterButton.gameObject.SetActive(false);
     }
+
+    public void WaterButtonClicked()
+    {
+        if (currentField != null && currentField.GetState() == FieldState.Watering)
+        {
+            currentField.Water();
+            UpdateUIButtons();
+        }
+    }
+    public void DigButtonClicked()
+    {
+        if (currentField != null && currentField.GetState() == FieldState.Empty)
+        {
+            currentField.Dig();
+            UpdateUIButtons();
+        }
+    }
+    public void PlantButtonClicked()
+    {
+        if (currentField != null && currentField.GetState() == FieldState.Planted)
+        {
+            currentField.Plant();
+            UpdateUIButtons();
+        }
+    }
+
+    public void HarvestButtonClicked()
+    {
+        if (currentField != null && currentField.GetState() == FieldState.Harvestable)
+        {
+            currentField.Harvest();
+            UpdateUIButtons();
+        }
+    }
+    
 }
