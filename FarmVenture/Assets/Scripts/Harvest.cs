@@ -15,7 +15,7 @@ public class Harvest : MonoBehaviour
 
         get { return stok; }
 
-     //   set { stok = value; }
+        set { stok = value; }
     }
     public void PerformHarvest()
     {

@@ -15,7 +15,7 @@ public class CharacterInteraction : MonoBehaviour
     public GameObject panel;
     private Field currentField;
     private FarmManager farmManager;
-   
+    public Harvest harvest;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Field"))
@@ -72,7 +72,7 @@ public class CharacterInteraction : MonoBehaviour
             harvestButton.gameObject.SetActive(true);
             waterButton.gameObject.SetActive(false);
         }
-        else if (currentField.GetState() == FieldState.Harvestable)
+        else if (currentField.GetState() == FieldState.Harvestable && harvest.Stok<5)
         {
             panel.SetActive(true);
             digButton.gameObject.SetActive(false);
