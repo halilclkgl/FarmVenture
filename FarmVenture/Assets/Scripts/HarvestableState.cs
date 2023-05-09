@@ -7,6 +7,7 @@ public class HarvestableState : IFieldState
     private CharacterInteraction characterInteraction;
     private float harvestTime = 2f; // Hasat süresi
     private Field field;
+
     public void EnterState(Field field)
     {
         Debug.Log("Tarla hasat için hazýr.");
@@ -39,11 +40,18 @@ public class HarvestableState : IFieldState
 
     private IEnumerator ProcessHarvest()
     {
-        yield return new WaitForSeconds(harvestTime);
-        Debug.Log("Hasat tamamlandý.");
-        characterInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteraction>();
-        field.SetState(new EmptyState());
+        Harvest harvest = GameObject.FindGameObjectWithTag("Player").GetComponent<Harvest>();
+        if (harvest.Stok<5)
+        {
+            yield return new WaitForSeconds(harvestTime);
+            Debug.Log("Hasat tamamlandý.");
+            characterInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteraction>();
+
+            harvest.PerformHarvest();
+            field.SetState(new EmptyState());
+            characterInteraction.UpdateUIButtons();
+        }
+         field.SetState(new HarvestableState());
         characterInteraction.UpdateUIButtons();
-      
     }
 }

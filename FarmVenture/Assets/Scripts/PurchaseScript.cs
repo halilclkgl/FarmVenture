@@ -8,53 +8,50 @@ public class PurchaseScript : MonoBehaviour
     private FarmManager farmManager;
     public MoneyManager moneyManager;
     public Button purchaseButton;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Field"))
         {
-            Field field = other.GetComponent<Field>();
-            if (field != null && !field.GetState().Equals(FieldState.Empty))
-            {
-                field.SetState(new EmptyState());
-                Debug.Log("Tarla zaten satýn alýnmýþ!");
-                return;
-            }
             farmManager = other.GetComponent<FarmManager>();
-            if (farmManager != null && farmManager.isPurchased==false)
+
+            if (farmManager != null && !farmManager.IsPurchased)
             {
                 ButtonInTrue();
                 Debug.Log("Tarla satýn alýndý!");
-               // field.SetState(new EmptyState());
             }
-           
+            else
+            {
+                Debug.Log("Tarla zaten satýn alýnmýþ!");
+            }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Field"))
         {
             farmManager = other.GetComponent<FarmManager>();
-
             ButtonInFalse();
-             
-
         }
     }
-    void ButtonInTrue() 
+
+    void ButtonInTrue()
     {
         purchaseButton.gameObject.SetActive(true);
     }
+
     void ButtonInFalse()
     {
         purchaseButton.gameObject.SetActive(false);
     }
+
     public void BuyField()
     {
         if (farmManager != null && moneyManager.money >= farmManager.fieldCost)
         {
             moneyManager.money -= farmManager.fieldCost;
-            farmManager.isPurchased = true;
-            
+            farmManager.IsPurchased = true;
             Debug.Log("Tarla satýn alýndý!");
             ButtonInFalse();
         }

@@ -22,7 +22,7 @@ public class CharacterInteraction : MonoBehaviour
         {
             Field field = other.GetComponent<Field>();
            farmManager = other.gameObject.GetComponent<FarmManager>();
-            if (field != null && farmManager != null && farmManager.isPurchased)
+            if (field != null && farmManager != null && farmManager.IsPurchased)
             {
                 currentField = field;
                 UpdateUIButtons();
