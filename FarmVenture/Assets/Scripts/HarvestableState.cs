@@ -42,7 +42,7 @@ public class HarvestableState : IFieldState
     {
         Harvest harvest = GameObject.FindGameObjectWithTag("Player").GetComponent<Harvest>();
         characterInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteraction>();
-        if (harvest.Stok < 5)
+        if (harvest.harvestList.Count < 5)
         {
            
             yield return new WaitForSeconds(harvestTime);

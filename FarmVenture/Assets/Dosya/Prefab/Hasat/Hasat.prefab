@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8349428792331050706}
   m_Layer: 0
   m_Name: Hasat
-  m_TagString: Untagged
+  m_TagString: Harvest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

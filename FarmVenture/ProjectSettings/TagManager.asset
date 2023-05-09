@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Field
   - Shop
+  - Harvest
   layers:
   - Default
   - TransparentFX

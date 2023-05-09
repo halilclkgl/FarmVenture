@@ -72,7 +72,7 @@ public class CharacterInteraction : MonoBehaviour
             harvestButton.gameObject.SetActive(true);
             waterButton.gameObject.SetActive(false);
         }
-        else if (currentField.GetState() == FieldState.Harvestable && harvest.Stok<5)
+        else if (currentField.GetState() == FieldState.Harvestable && harvest.harvestList.Count < 5)
         {
             panel.SetActive(true);
             digButton.gameObject.SetActive(false);
