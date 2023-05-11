@@ -6,15 +6,32 @@ public class Harvest : MonoBehaviour
 {
     public GameObject harvestPrefab;
     public Transform spawnPoint;
-    public GameObject Player;
     public List<GameObject> harvestList = new List<GameObject>(); // Hasat prefablarýný saklamak için liste
+   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Field"))
+        {
+         
+            FieldInteraction fieldInteraction = other.GetComponent<FieldInteraction>();
+           
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Field"))
+        {
+      
+           
+        }
+    }
 
     public void PerformHarvest()
     {
         if (harvestList.Count < 5)
         {
-            GameObject newHarvest = Instantiate(harvestPrefab, spawnPoint.position, Player.transform.localRotation);
-            newHarvest.transform.parent = Player.transform; // Karakterin sýrtýnda kalmasýný saðla
+            GameObject newHarvest = Instantiate(harvestPrefab, spawnPoint.position, Quaternion.identity);
+            newHarvest.transform.parent = transform; // Harvest objesinin altýnda kalmasýný saðla
             harvestList.Insert(0, newHarvest); // Listeye en baþa ekle
 
             NewSpawnPoint();

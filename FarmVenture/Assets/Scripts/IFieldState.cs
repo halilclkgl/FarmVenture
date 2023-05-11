@@ -4,9 +4,5 @@ using UnityEngine;
 
 public interface IFieldState
 {
-    void EnterState(Field field);
-    void Dig();
-    void Plant();
-    void Water();
-    void Harvest();
+    void Interact(FieldInteraction fieldInteraction);
 }

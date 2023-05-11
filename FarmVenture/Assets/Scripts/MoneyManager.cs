@@ -23,7 +23,4 @@ public class MoneyManager : MonoBehaviour
     {
         money += amount;
     }
-   
-
-
 }

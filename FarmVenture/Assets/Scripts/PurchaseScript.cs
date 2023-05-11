@@ -18,11 +18,11 @@ public class PurchaseScript : MonoBehaviour
             if (farmManager != null && !farmManager.IsPurchased)
             {
                 ButtonInTrue();
-                Debug.Log("Tarla satýn alýndý!");
+             //   Debug.Log("Tarla satýn alýndý!");
             }
             else
             {
-                Debug.Log("Tarla zaten satýn alýnmýþ!");
+              //  Debug.Log("Tarla zaten satýn alýnmýþ!");
             }
         }
     }
@@ -52,12 +52,12 @@ public class PurchaseScript : MonoBehaviour
         {
             moneyManager.money -= farmManager.fieldCost;
             farmManager.IsPurchased = true;
-            Debug.Log("Tarla satýn alýndý!");
+          //  Debug.Log("Tarla satýn alýndý!");
             ButtonInFalse();
         }
         else
         {
-            Debug.Log("Yeterli para yok!");
+          //  Debug.Log("Yeterli para yok!");
         }
     }
 }
