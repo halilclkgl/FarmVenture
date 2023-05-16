@@ -12,23 +12,23 @@ public class FieldManager : MonoBehaviour
     {
         if (other.CompareTag("Field"))
         {
-           field= (Field)other.GetComponent<Field>();
+            field = (Field)other.GetComponent<Field>();
             if (!field.isPurchased)
             {
                 button.gameObject.SetActive(true);
             }
-        
+
         }
     }
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerExit(Collider other)
     {
         button.gameObject.SetActive(false);
     }
-   public void BuyField() 
+    public void BuyField()
     {
-        if (moneyManager.money>50)
+        if (moneyManager.money > 50)
         {
-            moneyManager.money-=50;
+            moneyManager.money -= 50;
             field.SavePurchaseStatus();
             button.gameObject.SetActive(false);
         }

@@ -6,5 +6,5 @@ using UnityEngine.UI;
 public class FieldPurchase : MonoBehaviour
 {
     private FieldManager currentField;
-
+ 
 }
