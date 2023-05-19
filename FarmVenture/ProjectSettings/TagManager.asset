@@ -7,6 +7,19 @@ TagManager:
   - Field
   - Shop
   - Harvest
+  - Milk
+  - CowWater
+  - CowHay
+  - Cow
+  - Water
+  - Food
+  - Idle
+  - Chicken
+  - Chick
+  - CowWay
+  - ChickenWay
+  - Way1
+  - Way2
   layers:
   - Default
   - TransparentFX

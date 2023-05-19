@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     public Harvest harvest; // Harvest sýnýfýna eriþmek için referans
+   
     private bool isSelling; // Satýþ iþleminin devam edip etmediðini takip etmek için bir bayrak
 
     private void OnTriggerEnter(Collider other)
@@ -12,7 +13,7 @@ public class Shop : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             harvest = other.gameObject.GetComponent<Harvest>();
-            Debug.Log("Player ile temas saðlandý");
+           
             StartSelling();
         }
     }

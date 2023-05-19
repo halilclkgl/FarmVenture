@@ -43,7 +43,7 @@ public class FieldInteraction : MonoBehaviour
         {
             if (harvest.harvestList.Count < 5)
             {
-                harvest.PerformHarvest();
+                harvest.PerformHarvest(1);
             }
             else
             {
