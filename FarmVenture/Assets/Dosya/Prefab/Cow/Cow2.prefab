@@ -595,7 +595,7 @@ MonoBehaviour:
   - {fileID: 0}
   animator: {fileID: 4865534517996822012}
   eatDuration: 20
-  name: CowWay
+  Name: CowWay
 --- !u!1 &4865534517987366492
 GameObject:
   m_ObjectHideFlags: 0

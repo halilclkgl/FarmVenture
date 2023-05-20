@@ -12,7 +12,7 @@ public class WaterProcess : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
+     
         if (other.gameObject.tag == "Player" && !control)
         {
             control = true;
@@ -21,6 +21,7 @@ public class WaterProcess : MonoBehaviour
 
             progressBarCow.StartFillProgressBar();
         }
+      
     }
     private IEnumerator FillCowHayBar()
     {
@@ -37,7 +38,7 @@ public class WaterProcess : MonoBehaviour
             Debug.Log(stok);
             PlayerPrefs.SetInt("Stok",stok);
             control = false;
-            sayProcess.control = false ;
+            sayProcess.control = false;
         }
     }
 }

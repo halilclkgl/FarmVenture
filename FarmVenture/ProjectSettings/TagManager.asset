@@ -20,6 +20,10 @@ TagManager:
   - ChickenWay
   - Way1
   - Way2
+  - MilkHarvest
+  - Car
+  - ChickenFeed
+  - ChickenWater
   layers:
   - Default
   - TransparentFX

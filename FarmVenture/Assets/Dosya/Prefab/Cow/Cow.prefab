@@ -1547,7 +1547,7 @@ MonoBehaviour:
   waypoints: []
   animator: {fileID: 2253633071989424240}
   eatDuration: 2
-  name: CowWay
+  Name: CowWay
 --- !u!1 &2253633071999068006
 GameObject:
   m_ObjectHideFlags: 0

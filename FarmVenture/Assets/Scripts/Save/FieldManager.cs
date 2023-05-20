@@ -26,9 +26,9 @@ public class FieldManager : MonoBehaviour
     }
     public void BuyField()
     {
-        if (moneyManager.money > 50)
+        if (moneyManager.GetMoney() > 50)
         {
-            moneyManager.money -= 50;
+            moneyManager.SpendMoney(50);
             field.SavePurchaseStatus();
             button.gameObject.SetActive(false);
         }

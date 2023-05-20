@@ -178,9 +178,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 8325990227092797704}
   eatDuration: 20
-  name: ChickenWay
+  Name: ChickenWay
 --- !u!1 &8325990227100157110
 GameObject:
   m_ObjectHideFlags: 0

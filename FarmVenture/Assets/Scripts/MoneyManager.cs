@@ -6,17 +6,31 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text moneyText;
-    public int money = 1000; // Kullanýcýnýn baþlangýç parasý
+    private const string PlayerPrefsKey = "Money";
+    private int money = 500; // Kullanýcýnýn baþlangýç parasý
     private void Start()
     {
+      
+        money = PlayerPrefs.GetInt(PlayerPrefsKey, 0);
         moneyText.text = "MONEY : " + money;
 
     }
+    private void SaveMoney()
+    {
+        PlayerPrefs.SetInt(PlayerPrefsKey, money);
+        moneyText.text = "MONEY : " + money;
+    }
+    public int GetMoney()
+    {
+        return money;
+    }
+
     public bool SpendMoney(int amount)
     {
         if (money >= amount)
         {
             money -= amount;
+            SaveMoney();
             return true;
         }
         else
@@ -28,5 +42,7 @@ public class MoneyManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount;
+    
+        SaveMoney();
     }
 }

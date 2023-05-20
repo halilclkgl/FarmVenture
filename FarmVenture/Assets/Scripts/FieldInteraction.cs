@@ -41,7 +41,7 @@ public class FieldInteraction : MonoBehaviour
         }
         if (currentState is HarvestingState)
         {
-            if (harvest.harvestList.Count < 5)
+            if (harvest.harvestList.Count < 20)
             {
                 harvest.PerformHarvest(1);
             }

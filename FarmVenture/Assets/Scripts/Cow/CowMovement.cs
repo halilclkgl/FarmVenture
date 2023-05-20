@@ -12,10 +12,10 @@ public class CowMovement : MonoBehaviour
     private int currentWaypointIndex = 0;
     private bool isEating = false;
     private bool isIdle = false;
-    public string name;
+    public string Name;
     private void Start()
     {
-        waypoints = GameObject.FindGameObjectsWithTag(name)
+        waypoints = GameObject.FindGameObjectsWithTag(Name)
         .Select(obj => obj.transform)
         .ToArray();
         if (waypoints.Length == 0)
@@ -94,7 +94,7 @@ public class CowMovement : MonoBehaviour
     private IEnumerator StartIdle()
     {
         isIdle = true;
-       
+
         animator.SetFloat("Speed_f", 0f);
 
         yield return new WaitForSeconds(eatDuration);

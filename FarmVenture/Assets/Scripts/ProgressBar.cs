@@ -8,7 +8,7 @@ public class ProgressBar : MonoBehaviour
     public Image fillImage;
     public float fillSpeed = 2f;
     private float currentFill = 0f;
-    private bool isFilled = false;
+ //   private bool isFilled = false;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class ProgressBar : MonoBehaviour
     public void ResetProgressBar()
     {
         currentFill = 0f;
-        isFilled = false;
+      //  isFilled = false;
         UpdateFillAmount(currentFill);
     }
 }

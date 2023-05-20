@@ -26,7 +26,6 @@ public class AnimalManager : MonoBehaviour
 
     private void Awake()
     {
-
         chickenCount = PlayerPrefs.GetInt("chickenCount", 0);
         chickenCount2 = PlayerPrefs.GetInt("chickenCount2", 0);
         CockCount = PlayerPrefs.GetInt("CockCount", 0);
@@ -105,10 +104,10 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCow()
     {
-        if (moneyManager.money >= 1350)
+        if (moneyManager.GetMoney() >= 1350)
         {
             moneyManager.SpendMoney(1350);
-            Debug.Log(moneyManager.money);
+            Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab, cowSpawnPoint.position, cowSpawnPoint.rotation);
             cowCount++;
             SaveCowCount();
@@ -119,10 +118,10 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCow2()
     {
-        if (moneyManager.money >= 1350)
+        if (moneyManager.GetMoney() >= 1350)
         {
             moneyManager.SpendMoney(1350);
-            Debug.Log(moneyManager.money);
+            Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab2, cowSpawnPoint2.position, cowSpawnPoint2.rotation);
             cowCount2++;
             SaveCowCount();
@@ -131,7 +130,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyChicken()
     {
-        if (moneyManager.money >= 350)
+        if (moneyManager.GetMoney() >= 350)
         {
             moneyManager.SpendMoney(350);
             GameObject newCow = Instantiate(Chicken, ChickenSpawnPoint.position, ChickenSpawnPoint.rotation);
@@ -142,7 +141,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyChicken2()
     {
-        if (moneyManager.money >= 350)
+        if (moneyManager.GetMoney() >= 350)
         {
             moneyManager.SpendMoney(350);
             GameObject newCow = Instantiate(Chicken2, ChickenSpawnPoint2.position, ChickenSpawnPoint2.rotation);
@@ -156,7 +155,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCock()
     {
-        if (moneyManager.money >= 350)
+        if (moneyManager.GetMoney() >= 350)
         {
             moneyManager.SpendMoney(350);
             GameObject newCow = Instantiate(Cock, cockSpawnPoint.position, cockSpawnPoint.rotation);

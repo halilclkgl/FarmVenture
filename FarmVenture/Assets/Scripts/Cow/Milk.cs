@@ -52,10 +52,10 @@ public class Milk : MonoBehaviour
     public void MilkHarvesting() 
     {
         
-            if (harvest.harvestList.Count < 5 && stok > 0 )
+            if (harvest.harvestList.Count < 20 && stok > 0 )
             {
-                sayProcess.hayCow = false;
-                waterProcess.waterCow = false;
+               // sayProcess.hayCow = false;
+               // waterProcess.waterCow = false;
                
                 PlayerPrefs.SetInt("Stok", stok);
                 StartSelling();
@@ -78,7 +78,7 @@ public class Milk : MonoBehaviour
 
     private void SellHarvest()
     {
-        if (harvest.harvestList.Count < 5)
+        if (harvest.harvestList.Count < 20)
         {
             stok--;
             PlayerPrefs.SetInt("Stok", stok);

@@ -384,7 +384,7 @@ MonoBehaviour:
   - {fileID: 0}
   animator: {fileID: 925494364187479086}
   eatDuration: 20
-  name: ChickenWay
+  Name: ChickenWay
 --- !u!1 &925494364196965522
 GameObject:
   m_ObjectHideFlags: 0
