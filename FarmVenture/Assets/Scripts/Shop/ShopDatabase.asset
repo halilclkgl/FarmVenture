@@ -16,10 +16,10 @@ MonoBehaviour:
     items:
     - itemName: Milk
       price: 30
-      stock: 5
+      stock: 7
     - itemName: Tomato
       price: 5
-      stock: 5
+      stock: 2
     - itemName: Egg
       price: 5
-      stock: 5
+      stock: 0
