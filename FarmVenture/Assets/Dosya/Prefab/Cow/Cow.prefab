@@ -1548,6 +1548,8 @@ MonoBehaviour:
   animator: {fileID: 2253633071989424240}
   eatDuration: 2
   Name: CowWay
+  water: water
+  hay: hay
 --- !u!1 &2253633071999068006
 GameObject:
   m_ObjectHideFlags: 0

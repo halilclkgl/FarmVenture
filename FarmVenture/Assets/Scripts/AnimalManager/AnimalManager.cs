@@ -5,24 +5,37 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    public GameObject[] Animal;
-    public MoneyManager moneyManager;
-    public GameObject animalShopPanel;
-    public Transform cowSpawnPoint;
-    public Transform cowSpawnPoint2;
-    public Transform cockSpawnPoint;
-    public Transform ChickenSpawnPoint;
-    public Transform ChickenSpawnPoint2;
-    public GameObject cowPrefab;
-    public GameObject cowPrefab2;
-    public GameObject Chicken;
-    public GameObject Cock;
-    public GameObject Chicken2;
-    public int cowCount = 0;
-    public int cowCount2 = 0;
-    public int chickenCount = 0;
-    public int chickenCount2 = 0;
-    public int CockCount = 0;
+    [SerializeField] private GameObject[] Animal;
+
+    [Header("Money Settings")]
+    [SerializeField] private MoneyManager moneyManager;
+
+    [Header("PlayerSo Settings")]
+    [SerializeField] private PlayerSo playerSo;
+
+    [Header("Animal Shop")]
+    [SerializeField] private GameObject animalShopPanel;
+
+    [Header("Spawn Points")]
+    [SerializeField] private Transform cowSpawnPoint;
+    [SerializeField] private Transform cowSpawnPoint2;
+    [SerializeField] private Transform cockSpawnPoint;
+    [SerializeField] private Transform ChickenSpawnPoint;
+    [SerializeField] private Transform ChickenSpawnPoint2;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject cowPrefab;
+    [SerializeField] private GameObject cowPrefab2;
+    [SerializeField] private GameObject Chicken;
+    [SerializeField] private GameObject Cock;
+    [SerializeField] private GameObject Chicken2;
+
+    [Header("Animal Counts")]
+    [SerializeField] private int cowCount = 0;
+    [SerializeField] private int cowCount2 = 0;
+    [SerializeField] private int chickenCount = 0;
+    [SerializeField] private int chickenCount2 = 0;
+    [SerializeField] private int CockCount = 0;
 
     private void Awake()
     {
@@ -34,6 +47,7 @@ public class AnimalManager : MonoBehaviour
         SpawnCows(cowCount, cowCount2); // cowCount deðerine göre hayvanlarý spawn et
         SpawnChickens(chickenCount, chickenCount2);
         SpawnCocks(CockCount);
+        playerSo.cowCount = cowCount + cowCount2;
     }
 
     private void Start()
@@ -104,26 +118,31 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCow()
     {
-        if (moneyManager.GetMoney() >= 1350)
+        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit >= playerSo.cowCount)
         {
+            Debug.Log(playerSo.cowAreaLimit >= cowCount);
+
+                
             moneyManager.SpendMoney(1350);
             Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab, cowSpawnPoint.position, cowSpawnPoint.rotation);
             cowCount++;
             SaveCowCount();
-
+            playerSo.cowCount = cowCount + cowCount2;
         }
         else { Debug.Log("Yetersiz bakiye"); }
 
     }
     public void BuyCow2()
     {
-        if (moneyManager.GetMoney() >= 1350)
+        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit >= playerSo.cowCount)
         {
+            Debug.Log(playerSo.cowAreaLimit >= cowCount);
             moneyManager.SpendMoney(1350);
             Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab2, cowSpawnPoint2.position, cowSpawnPoint2.rotation);
             cowCount2++;
+            playerSo.cowCount = cowCount + cowCount2;
             SaveCowCount();
         }
         else { Debug.Log("Yetersiz bakiye"); }

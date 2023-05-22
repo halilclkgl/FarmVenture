@@ -38,7 +38,10 @@ public class MoneyManager : MonoBehaviour
             return false;
         }
     }
-
+    public bool CanAfford(int amount)
+    {
+        return money >= amount;
+    }
     public void AddMoney(int amount)
     {
         money += amount;

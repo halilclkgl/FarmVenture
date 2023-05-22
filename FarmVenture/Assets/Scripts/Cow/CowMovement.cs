@@ -13,6 +13,9 @@ public class CowMovement : MonoBehaviour
     private bool isEating = false;
     private bool isIdle = false;
     public string Name;
+    public string water;
+    public string hay;
+
     private void Start()
     {
         waypoints = GameObject.FindGameObjectsWithTag(Name)
@@ -53,7 +56,7 @@ public class CowMovement : MonoBehaviour
 
         if (transform.position == targetPosition)
         {
-            if (waypoints[currentWaypointIndex].CompareTag("Food") || waypoints[currentWaypointIndex].CompareTag("Water"))
+            if (waypoints[currentWaypointIndex].name== water || waypoints[currentWaypointIndex].name == hay)
             {
                 StartCoroutine(StartEating());
             }

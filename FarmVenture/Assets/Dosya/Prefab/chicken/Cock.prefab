@@ -390,6 +390,8 @@ MonoBehaviour:
   animator: {fileID: 5187148451749161165}
   eatDuration: 20
   Name: ChickenWay
+  water: water
+  hay: hay
 --- !u!1 &5187148451739688877
 GameObject:
   m_ObjectHideFlags: 0

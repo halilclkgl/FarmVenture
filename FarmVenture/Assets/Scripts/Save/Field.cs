@@ -12,6 +12,7 @@ public class Field : MonoBehaviour
        // PlayerPrefs.DeleteKey(fieldID);
         int purchasedValue = PlayerPrefs.GetInt(fieldID);
         isPurchased = purchasedValue == 1;
+
     }
     public void SavePurchaseStatus()
     {
