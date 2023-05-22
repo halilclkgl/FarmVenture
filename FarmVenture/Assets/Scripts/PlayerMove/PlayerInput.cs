@@ -11,13 +11,14 @@ public class PlayerInput : MonoBehaviour
     CharacterMovement characterMovement;
    [SerializeField] Transform player1;
     [SerializeField] Transform harvest;
- 
+    
     public void HorseUp() 
     {
         characterMovement = gameObject.GetComponent<CharacterMovement>();
 
         if (!isHorseMounted)
         {
+            characterMovement.moveSpeed = 5f;
             harvest.transform.position = transform.TransformPoint(new Vector3(0, 2.8f, -1f));
             characterMovement.IsIdle = true;
             Vector3 rotation = transform.rotation.eulerAngles;
@@ -35,6 +36,7 @@ public class PlayerInput : MonoBehaviour
 
         if ( isHorseMounted)
         {
+            characterMovement.moveSpeed = 1.5f;
             harvest.transform.position = transform.TransformPoint(new Vector3(0, 1.47f, -1f));
             Vector3 rotation = transform.rotation.eulerAngles;
             characterMovement.IsIdle = false;

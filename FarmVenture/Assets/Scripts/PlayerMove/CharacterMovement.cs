@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour, IJoystickObserver
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1.5f;
     private CharacterController characterController;
-    public Animator animator;
-   [SerializeField] private bool isIdle = false;
+    public Animator animator; 
+    public Animator animatorH;
+    [SerializeField] private bool isIdle = false;
     private float idleTimer = 0f;
     private float idleTimeThreshold = 2f;
     public bool isHorseMounted=false;
@@ -51,7 +52,7 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
                 isIdle = false;
                 animator.SetFloat("H_Speed", 1f);
                 animator.SetInteger("Animation_int", 0);
-                //animator.SetBool("Horse", false);
+                animatorH.SetFloat("Speed_f",1);
             }
 
             animator.SetInteger("Animation_int", 0);
@@ -59,7 +60,7 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
         }
         else if (isHorseMounted && moveDirection == Vector3.zero) 
         {
-            Debug.Log("asdsa");
+            animatorH.SetFloat("Speed_f", 0);
             isIdle = false;
             animator.SetBool("Horse", true);
             animator.SetFloat("H_Speed", 0f);
