@@ -16,7 +16,7 @@ public class GameArea :MonoBehaviour
     {
         // PlayerPrefs.DeleteKey(areaID);
         int purchasedValue = PlayerPrefs.GetInt(areaID);
-        Debug.Log(PlayerPrefs.GetInt(areaID));
+     
         isUnlocked = purchasedValue == 1;
         if (isUnlocked)
         {

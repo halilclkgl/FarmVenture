@@ -13,7 +13,7 @@ public class SayProcess : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("çarptý1231");
+       
         if (other.gameObject.tag == "Player" && !control)
         {
             control = true;
@@ -22,10 +22,7 @@ public class SayProcess : MonoBehaviour
              
             progressBarCow.StartFillProgressBar();
         }
-        if (other.gameObject.tag == "Player" && control && waterProcess.control && !hayCow &&!waterProcess.waterCow)
-        {
-            Debug.Log("denemeee1212");
-        }
+       
     }
     private IEnumerator FillCowHayBar()
     {

@@ -8,27 +8,45 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] GameObject player;
     public Animator animator;
     private bool isHorseMounted = false;
-
-    private void Update()
+    CharacterMovement characterMovement;
+   [SerializeField] Transform player1;
+    [SerializeField] Transform harvest;
+ 
+    public void HorseUp() 
     {
-        if (Input.GetKeyUp(KeyCode.H) && !isHorseMounted)
+        characterMovement = gameObject.GetComponent<CharacterMovement>();
+
+        if (!isHorseMounted)
         {
+            harvest.transform.position = transform.TransformPoint(new Vector3(0, 2.8f, -1f));
+            characterMovement.IsIdle = true;
+            Vector3 rotation = transform.rotation.eulerAngles;
             Debug.Log("bindi");
-            animator.SetBool("horse", true);
-            player.transform.position = new Vector3(0.14f, 1.72f, -0.35f);
-            player.transform.rotation = Quaternion.Euler(15f, -42, -16);
+            animator.SetBool("Horse", true);
+            animator.SetInteger("Animation_int", 0);
+            characterMovement.isHorseMounted = true;
+            player.transform.position = transform.TransformPoint(new Vector3(0.14f, 1.72f, -0.35f));
+            player.transform.rotation = Quaternion.Euler((rotation.x) + 15f, (rotation.y) + -42, (rotation.z) + -16);
             horse.SetActive(true);
+
             isHorseMounted = true;
+            return;
         }
 
-        if (Input.GetKeyUp(KeyCode.F) && isHorseMounted)
+        if ( isHorseMounted)
         {
+            harvest.transform.position = transform.TransformPoint(new Vector3(0, 1.47f, -1f));
+            Vector3 rotation = transform.rotation.eulerAngles;
+            characterMovement.IsIdle = false;
+            characterMovement.isHorseMounted = false;
             Debug.Log("indi");
             horse.SetActive(false);
-            animator.SetBool("horse", false);
-            player.transform.position = Vector3.zero;
-            player.transform.rotation = Quaternion.identity;
+            animator.SetBool("Horse", false);
+            animator.SetFloat("H_Speed", 0f);
+            player.transform.position = transform.TransformPoint(Vector3.zero);
+            player.transform.rotation = Quaternion.Euler((rotation.x), (rotation.y), (rotation.z));
             isHorseMounted = false;
         }
+
     }
 }

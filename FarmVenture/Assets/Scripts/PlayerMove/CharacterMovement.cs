@@ -7,9 +7,10 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
     public float moveSpeed = 5f;
     private CharacterController characterController;
     public Animator animator;
-    private bool isIdle = false;
+   [SerializeField] private bool isIdle = false;
     private float idleTimer = 0f;
     private float idleTimeThreshold = 2f;
+    public bool isHorseMounted=false;
     public List<int> idleAnimations = new List<int>() ;
     private void Awake()
     {
@@ -20,7 +21,11 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
             Debug.LogError("Character Controller component is missing on the Player object.");
         }
     }
-
+    public bool IsIdle
+    {
+        get { return isIdle; }
+        set { isIdle = value; }
+    }
     public void OnJoystickInput(Vector2 direction)
     {
         if (characterController == null)
@@ -36,11 +41,29 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 10f);
-
+            if (!isHorseMounted)
+            {
+                animator.SetFloat("Speed_f", 1f);
+            }
             // Karakter hareket ettiðinde animasyonlarý oynat
-            animator.SetFloat("Speed_f", 1f);
+            if (isHorseMounted)
+            {
+                isIdle = false;
+                animator.SetFloat("H_Speed", 1f);
+                animator.SetInteger("Animation_int", 0);
+                //animator.SetBool("Horse", false);
+            }
+
             animator.SetInteger("Animation_int", 0);
             isIdle = false;
+        }
+        else if (isHorseMounted && moveDirection == Vector3.zero) 
+        {
+            Debug.Log("asdsa");
+            isIdle = false;
+            animator.SetBool("Horse", true);
+            animator.SetFloat("H_Speed", 0f);
+            animator.SetInteger("Animation_int", 0);
         }
         else
         {

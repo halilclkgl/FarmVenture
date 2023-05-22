@@ -13,7 +13,7 @@ public class ChickenFeed : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("çarptý1231");
+       
         if (other.gameObject.tag == "Player" && !control)
         {
             control = true;
@@ -37,7 +37,7 @@ public class ChickenFeed : MonoBehaviour
             int chickenCount = GameObject.FindGameObjectsWithTag("Chicken").Length;
             int Stock = PlayerPrefs.GetInt("EggStock");
             Stock += chickenCount;
-            Debug.Log(Stock);
+          
             PlayerPrefs.SetInt("EggStock", Stock);
             control = false;
             chickenWater.control = false;
