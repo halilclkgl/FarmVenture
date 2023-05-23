@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameAreaManager : MonoBehaviour
@@ -8,23 +9,37 @@ public class GameAreaManager : MonoBehaviour
     public MoneyManager moneyManager; // Para yöneticisi
     public PlayerSo playerSo;
 
-    private void Start()
+    public void Deneme(GameArea gameAreas) 
     {
-        
+        this.gameAreas = gameAreas;
+    
     }
-
     // Belirli bir alaný satýn al
-    public void BuyArea(int areaID)
+    public void BuyArea()
     {
         //  GameArea area = gameObject
-        Debug.Log("Yetersiz para!123");
-        if (gameAreas != null && !gameAreas.isUnlocked)
+    
+
+        if (gameAreas != null && !gameAreas.isUnlocked && gameAreas.areaName == "Cow")
         {
             if (moneyManager.CanAfford(gameAreas.price))
             {
                 moneyManager.SpendMoney(gameAreas.price);
                 gameAreas.UnlockArea();
-                SaveGame(); // Oyunu kaydet
+                SaveGameCow(); // Oyunu kaydet
+            }
+            else
+            {
+                Debug.Log("Yetersiz para!");
+            }
+        }
+        if (gameAreas != null && !gameAreas.isUnlocked && gameAreas.areaName == "Chicken")
+        {
+            if (moneyManager.CanAfford(gameAreas.price))
+            {
+                moneyManager.SpendMoney(gameAreas.price);
+                gameAreas.UnlockArea();
+                SaveGameChicken(); // Oyunu kaydet
             }
             else
             {
@@ -35,9 +50,14 @@ public class GameAreaManager : MonoBehaviour
   
 
     // Oyunu kaydet
-    private void SaveGame()
+    private void SaveGameCow()
     {
         // Oyunun kaydedilme kodu burada yer almalýdýr
         playerSo.cowAreaLimit += 10;
+    }
+    private void SaveGameChicken()
+    {
+        // Oyunun kaydedilme kodu burada yer almalýdýr
+        playerSo.chickenAreaLimit += 10;
     }
 }

@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   animator: {fileID: 2253633071989424240}
-  eatDuration: 2
+  eatDuration: 20
   Name: CowWay
   water: water
   hay: hay

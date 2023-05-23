@@ -39,6 +39,8 @@ public class AnimalManager : MonoBehaviour
 
     private void Awake()
     {
+      
+
         chickenCount = PlayerPrefs.GetInt("chickenCount", 0);
         chickenCount2 = PlayerPrefs.GetInt("chickenCount2", 0);
         CockCount = PlayerPrefs.GetInt("CockCount", 0);
@@ -48,6 +50,7 @@ public class AnimalManager : MonoBehaviour
         SpawnChickens(chickenCount, chickenCount2);
         SpawnCocks(CockCount);
         playerSo.cowCount = cowCount + cowCount2;
+        playerSo.chickenCount= chickenCount + chickenCount2;
     }
 
     private void Start()
@@ -126,11 +129,12 @@ public class AnimalManager : MonoBehaviour
             moneyManager.SpendMoney(1350);
             Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab, cowSpawnPoint.position, cowSpawnPoint.rotation);
+            newCow.transform.parent = Animal[1].transform;
             cowCount++;
             SaveCowCount();
             playerSo.cowCount = cowCount + cowCount2;
         }
-        else { Debug.Log("Yetersiz bakiye"); }
+        else { Debug.Log("Yetersiz bakiye21"); }
 
     }
     public void BuyCow2()
@@ -141,31 +145,37 @@ public class AnimalManager : MonoBehaviour
             moneyManager.SpendMoney(1350);
             Debug.Log(moneyManager.GetMoney());
             GameObject newCow = Instantiate(cowPrefab2, cowSpawnPoint2.position, cowSpawnPoint2.rotation);
+            newCow.transform.parent = Animal[1].transform;
             cowCount2++;
             playerSo.cowCount = cowCount + cowCount2;
             SaveCowCount();
         }
-        else { Debug.Log("Yetersiz bakiye"); }
+        else { Debug.Log("Yetersiz bakiye12"); }
     }
     public void BuyChicken()
     {
-        if (moneyManager.GetMoney() >= 350)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
-            GameObject newCow = Instantiate(Chicken, ChickenSpawnPoint.position, ChickenSpawnPoint.rotation);
+            GameObject newChicken = Instantiate(Chicken, ChickenSpawnPoint.position, ChickenSpawnPoint.rotation);
+            newChicken.transform.parent = Animal[0].transform;
             chickenCount++;
             SaveCowCount();
+            playerSo.chickenCount = chickenCount + chickenCount2;
         }
         else { Debug.Log("Yetersiz bakiye"); }
     }
     public void BuyChicken2()
     {
-        if (moneyManager.GetMoney() >= 350)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
-            GameObject newCow = Instantiate(Chicken2, ChickenSpawnPoint2.position, ChickenSpawnPoint2.rotation);
+            GameObject newChicken2 = Instantiate(Chicken2, ChickenSpawnPoint2.position, ChickenSpawnPoint2.rotation);
+            newChicken2.transform.parent = Animal[0].transform;
             chickenCount2++;
             SaveCowCount();
+          
+            playerSo.chickenCount = chickenCount + chickenCount2;
         }
         else
         {
@@ -174,19 +184,21 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCock()
     {
-        if (moneyManager.GetMoney() >= 350)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
-            GameObject newCow = Instantiate(Cock, cockSpawnPoint.position, cockSpawnPoint.rotation);
+            GameObject newCock = Instantiate(Cock, cockSpawnPoint.position, cockSpawnPoint.rotation);
+            newCock.transform.parent = Animal[0].transform;
             CockCount++;
             SaveCowCount();
+            playerSo.chickenCount = chickenCount + chickenCount2;
         }
         else
         {
             Debug.Log("Yetersiz bakiye");
         }
     }
-
+   
     public void SaveCowCount()
     {
         PlayerPrefs.SetInt("chickenCount", chickenCount);

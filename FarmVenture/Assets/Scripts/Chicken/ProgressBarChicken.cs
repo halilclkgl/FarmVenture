@@ -8,10 +8,21 @@ public class ProgressBarChicken : MonoBehaviour
     public UnityEngine.UI.Image progressBar;
     public float fillDuration = 2f; // Ýlerleme süresi (saniye)
     public float reverseDuration = 12f;
-
+    private ChickenFeed chickenFeed;
+    private ChickenWater chickenWater;
 
     public void StartFillProgressBar()
     {
+        StartCoroutine(FillProgressBar());
+    }
+    public void StartFillProgressBar(ChickenWater chickenWater)
+    {
+        this.chickenWater = chickenWater;
+        StartCoroutine(FillProgressBar());
+    }
+    public void StartFillProgressBar(ChickenFeed chickenFeed)
+    {
+        this.chickenFeed = chickenFeed;
         StartCoroutine(FillProgressBar());
     }
 
@@ -48,6 +59,17 @@ public class ProgressBarChicken : MonoBehaviour
 
             yield return null;
         }
+        if (chickenWater)
+        {
+            chickenWater.waterChicken = true;
+            chickenWater.CollectEggFromChick();
+        }
+        if (chickenFeed)
+        {
+
+            chickenFeed.feedChicken = true;
+            chickenFeed.CollectEggFromChick();
+        }
 
         progressBar.fillAmount = 0f; // Ýlerleme çubuðunu tamamen boþalt
     }
@@ -55,7 +77,7 @@ public class ProgressBarChicken : MonoBehaviour
     {
         StartCoroutine(EmptyProgressBar());
 
-        Debug.Log("Ýlerleme çubuðu tamamlandý!");
+      //  Debug.Log("Ýlerleme çubuðu tamamlandý!");
     }
 
 }

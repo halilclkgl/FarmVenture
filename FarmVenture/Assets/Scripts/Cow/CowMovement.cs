@@ -18,9 +18,13 @@ public class CowMovement : MonoBehaviour
 
     private void Start()
     {
+        AnimalMove();
+    }
+    public void AnimalMove() 
+    {
         waypoints = GameObject.FindGameObjectsWithTag(Name)
-        .Select(obj => obj.transform)
-        .ToArray();
+         .Select(obj => obj.transform)
+         .ToArray();
         if (waypoints.Length == 0)
         {
             Debug.LogError("Waypoints not set!");
@@ -29,6 +33,7 @@ public class CowMovement : MonoBehaviour
 
         animator = GetComponent<Animator>();
         SetNextWaypoint();
+
     }
 
     private void Update()

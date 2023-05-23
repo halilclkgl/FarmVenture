@@ -6,14 +6,22 @@ using UnityEngine.UIElements;
 
 public class ProgressBarCow : MonoBehaviour
 {
-    public Milk milk;
     public UnityEngine.UI.Image progressBar;
     public float fillDuration = 2f; // Ýlerleme süresi (saniye)
     public float reverseDuration = 12f;
 
+    private WaterProcess waterProcess;
+    private HayProcess hayProcess;
 
-    public void StartFillProgressBar()
+
+    public void StartFillProgressBar(WaterProcess waterProcess)
     {
+        this.waterProcess = waterProcess;
+        StartCoroutine(FillProgressBar());
+    }
+    public void StartFillProgressBar(HayProcess hayProcess)
+    {
+        this.hayProcess= hayProcess;
         StartCoroutine(FillProgressBar());
     }
 
@@ -50,14 +58,26 @@ public class ProgressBarCow : MonoBehaviour
 
             yield return null;
         }
-     
+        if (hayProcess)
+        {
+            hayProcess.hayCow = true;
+            hayProcess.CollectMilkFromCows();
+        }
+        if (waterProcess)
+        {
+           
+            waterProcess.waterCow = true;
+            waterProcess.CollectMilkFromCows();
+        }
+        
+       
         progressBar.fillAmount = 0f; // Ýlerleme çubuðunu tamamen boþalt
     }
     private void OnProgressBarFilled()
     {
         StartCoroutine(EmptyProgressBar());
        
-        Debug.Log("Ýlerleme çubuðu tamamlandý!");
+      //  Debug.Log("Ýlerleme çubuðu tamamlandý!");
     }
 
 }

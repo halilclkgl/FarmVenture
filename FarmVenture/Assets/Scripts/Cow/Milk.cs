@@ -5,38 +5,23 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class Milk : MonoBehaviour
 {
-    public SayProcess sayProcess;
-    public WaterProcess waterProcess;
-  
     public Harvest harvest;
     public int stok;
-    private bool isSelling=false;
-    public void MilkCow() 
-    {
-        stok = PlayerPrefs.GetInt("Stok");
-        if (sayProcess.hayCow && waterProcess.waterCow) 
-        {
-            int cowCount = GameObject.FindGameObjectsWithTag("Cow").Length;
-            stok += cowCount;
-
-            PlayerPrefs.SetInt("Stok", stok);
-            
-        }
-    }
+    private bool isSelling = false;
+  
    
- 
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-           
+
             stok = PlayerPrefs.GetInt("Stok");
-           
-            if (stok>0 )
+
+            if (stok > 0)
             {
                 MilkHarvesting();
-                
-            } 
+
+            }
         }
     }
 
@@ -46,25 +31,22 @@ public class Milk : MonoBehaviour
         {
             StopSelling();
         }
-        
+
     }
 
-    public void MilkHarvesting() 
+    public void MilkHarvesting()
     {
-        
-            if (harvest.harvestList.Count < 20 && stok > 0 )
-            {
-               // sayProcess.hayCow = false;
-               // waterProcess.waterCow = false;
-               
-                PlayerPrefs.SetInt("Stok", stok);
-                StartSelling();
-             }
-            else
-            {
-                return;
-            }
-    
+
+        if (harvest.harvestList.Count < 20 && stok > 0)
+        {
+            PlayerPrefs.SetInt("Stok", stok);
+            StartSelling();
+        }
+        else
+        {
+            return;
+        }
+
     }
 
     private void StartSelling()
@@ -78,7 +60,7 @@ public class Milk : MonoBehaviour
 
     private void SellHarvest()
     {
-        if (harvest.harvestList.Count < 20)
+        if (harvest.harvestList.Count < 20 && stok>0)
         {
             stok--;
             PlayerPrefs.SetInt("Stok", stok);

@@ -4,27 +4,10 @@ using UnityEngine;
 
 public class Egg : MonoBehaviour
 {
-    public ChickenFeed chickenFeed;
-    public ChickenWater chickenWater;
-
     public Harvest harvest;
     public int stok;
     private bool isSelling = false;
-    public void EggChicken()
-    {
-        stok = PlayerPrefs.GetInt("EggStock");
-        if (chickenFeed.feedChicken && chickenWater.waterChicken)
-        {
-            int Stock = GameObject.FindGameObjectsWithTag("Chicken").Length;
-
-            stok += Stock;
-
-            PlayerPrefs.SetInt("EggStock", stok);
-
-        }
-    }
-
-
+  
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -54,9 +37,7 @@ public class Egg : MonoBehaviour
 
         if (harvest.harvestList.Count < 20 && stok > 0)
         {
-            chickenFeed.feedChicken = false;
-            chickenWater.waterChicken = false;
-
+          
             PlayerPrefs.SetInt("EggStock", stok);
             StartSelling();
         }
@@ -78,7 +59,7 @@ public class Egg : MonoBehaviour
 
     private void SellHarvest()
     {
-        if (harvest.harvestList.Count < 20)
+        if (harvest.harvestList.Count < 20 && stok > 0)
         {
             stok--;
             PlayerPrefs.SetInt("EggStock", stok);

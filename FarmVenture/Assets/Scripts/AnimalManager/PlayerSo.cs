@@ -7,4 +7,6 @@ public class PlayerSo : ScriptableObject
 {
     public int cowCount;
     public int cowAreaLimit = 10;
+    public int chickenCount;
+    public int chickenAreaLimit = 10;
 }

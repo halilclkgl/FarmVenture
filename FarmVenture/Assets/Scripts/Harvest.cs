@@ -29,7 +29,7 @@ public class Harvest : MonoBehaviour
         }
         if (other.gameObject.tag == "CowHay" || other.gameObject.tag == "CowWater" || other.gameObject.tag == "Milk")
         {
-            milk.MilkCow();
+         //   milk.MilkCow();
         }
     }
 

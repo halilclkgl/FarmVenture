@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ChickenWater : MonoBehaviour
 {
-     public ProgressBarChicken progressBarChicken;
-    public ChickenFeed chickenFeed;
+    public ProgressBarChicken ProgressBarChicken;
+
     public bool waterChicken = false;
     public bool control = false;
-    private float cowHayBarFillDuration = 10f;
+
+    public EggControl eggControl;
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,28 +18,15 @@ public class ChickenWater : MonoBehaviour
         {
             control = true;
 
-            StartCoroutine(FillCowHayBar());
+            //StartCoroutine(FillCowHayBar());
 
-            progressBarChicken.StartFillProgressBar();
+            ProgressBarChicken.StartFillProgressBar(this);
         }
 
     }
-    private IEnumerator FillCowHayBar()
+    public void CollectEggFromChick()
     {
-        yield return new WaitForSeconds(cowHayBarFillDuration);
+        eggControl.CollectEgg();
 
-        waterChicken = true;
-        if (waterChicken && chickenFeed.feedChicken)
-        {
-            chickenFeed.feedChicken = false;
-            waterChicken = false;
-            int chickenCount = GameObject.FindGameObjectsWithTag("Chicken").Length;
-            int Stock = PlayerPrefs.GetInt("EggStock");
-            Stock += chickenCount;
-            Debug.Log(Stock);
-            PlayerPrefs.SetInt("EggStock", Stock);
-            control = false;
-            chickenFeed.control = false;
-        }
     }
 }
