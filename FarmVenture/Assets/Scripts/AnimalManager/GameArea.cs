@@ -13,13 +13,23 @@ public class GameArea :MonoBehaviour
     public bool isUnlocked;// Alanýn kilidi açýk mý
     public Button areaBuy;
     public GameObject[] obje;
-
+    public Transform[] waypoints;
     private void Start()
     {
         // PlayerPrefs.DeleteKey(areaID);
         int purchasedValue = PlayerPrefs.GetInt(areaID);
-     
+      
+       
         isUnlocked = purchasedValue == 1;
+        if (isUnlocked && gameObject.tag=="CowFloor")
+        {
+            AnimalMoveManager.Instance.AddCowWaypoints(waypoints);
+        }
+        if (isUnlocked && gameObject.tag == "ChickenFloor")
+        {
+            AnimalMoveManager.Instance.AddChickenWaypoints(waypoints);
+            Debug.Log(waypoints);
+        }
         if (isUnlocked)
         {
             BoxCollider boxCollider = GetComponent<BoxCollider>();

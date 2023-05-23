@@ -11,9 +11,6 @@ public class EggControl : MonoBehaviour
 
     public void CollectEgg()
     {
-        Debug.Log(chickenFeed.feedChicken+"  feed");
-        Debug.Log(chickenWater.waterChicken+"  water");
-        Debug.Log(chickenWater.waterChicken && chickenFeed.feedChicken);
         if (chickenWater.waterChicken && chickenFeed.feedChicken)
         {
             int chickenCount = playerSo.chickenCount;
@@ -25,7 +22,7 @@ public class EggControl : MonoBehaviour
                 int stok = PlayerPrefs.GetInt("EggStock");
                 stok += 10;
                 PlayerPrefs.SetInt("EggStock", stok);
-                Debug.Log("10 adet yumurta eklendi");
+               
                 ResetProcesses();
             }
             else if (chickenCount < 15 && chickenCount > 0)
@@ -33,7 +30,7 @@ public class EggControl : MonoBehaviour
                 int stok = PlayerPrefs.GetInt("EggStock");
                 stok += chickenCount;
                 PlayerPrefs.SetInt("EggStock", stok);
-                Debug.Log(chickenCount + " adet yumurta eklendi");
+           
                 ResetProcesses();
             }
         }

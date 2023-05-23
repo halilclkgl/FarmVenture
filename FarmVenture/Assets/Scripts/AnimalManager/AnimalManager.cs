@@ -121,7 +121,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCow()
     {
-        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit >= playerSo.cowCount)
+        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit > playerSo.cowCount)
         {
             Debug.Log(playerSo.cowAreaLimit >= cowCount);
 
@@ -139,7 +139,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCow2()
     {
-        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit >= playerSo.cowCount)
+        if (moneyManager.GetMoney() >= 1350 && playerSo.cowAreaLimit > playerSo.cowCount)
         {
             Debug.Log(playerSo.cowAreaLimit >= cowCount);
             moneyManager.SpendMoney(1350);
@@ -154,7 +154,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyChicken()
     {
-        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit > playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
             GameObject newChicken = Instantiate(Chicken, ChickenSpawnPoint.position, ChickenSpawnPoint.rotation);
@@ -167,7 +167,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyChicken2()
     {
-        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit > playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
             GameObject newChicken2 = Instantiate(Chicken2, ChickenSpawnPoint2.position, ChickenSpawnPoint2.rotation);
@@ -184,7 +184,7 @@ public class AnimalManager : MonoBehaviour
     }
     public void BuyCock()
     {
-        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit >= playerSo.chickenCount)
+        if (moneyManager.GetMoney() >= 350 && playerSo.chickenAreaLimit > playerSo.chickenCount)
         {
             moneyManager.SpendMoney(350);
             GameObject newCock = Instantiate(Cock, cockSpawnPoint.position, cockSpawnPoint.rotation);

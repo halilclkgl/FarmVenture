@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 4743231832741077849}
   m_Layer: 0
   m_Name: ALAN
-  m_TagString: Untagged
+  m_TagString: CowFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,6 +672,23 @@ MonoBehaviour:
   - {fileID: 5191869261932115913}
   - {fileID: 8838956701155253824}
   - {fileID: 8131436282509411796}
+  waypoints:
+  - {fileID: 427366389370807297}
+  - {fileID: 1790806936782192539}
+  - {fileID: 7657205256243512720}
+  - {fileID: 4313199272137654415}
+  - {fileID: 2999815466841352326}
+  - {fileID: 7101693606642238842}
+  - {fileID: 9205162318233685064}
+  - {fileID: 1572896424350404872}
+  - {fileID: 2282891150194773131}
+  - {fileID: 5152949869480829621}
+  - {fileID: 4440235566997661429}
+  - {fileID: 3366164029950200756}
+  - {fileID: 8768833653148362276}
+  - {fileID: 6560010498031941674}
+  - {fileID: 1589233568105957550}
+  - {fileID: 4441130636548337752}
 --- !u!65 &4743231832741077849
 BoxCollider:
   m_ObjectHideFlags: 0

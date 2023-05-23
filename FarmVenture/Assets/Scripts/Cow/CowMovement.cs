@@ -22,9 +22,15 @@ public class CowMovement : MonoBehaviour
     }
     public void AnimalMove() 
     {
-        waypoints = GameObject.FindGameObjectsWithTag(Name)
-         .Select(obj => obj.transform)
-         .ToArray();
+        AnimalMoveManager animalMoveManager = AnimalMoveManager.Instance;
+
+        if (animalMoveManager == null)
+        {
+            Debug.LogError("FieldManager not found!");
+            return;
+        }
+
+        UpgradeAnimalMove();
         if (waypoints.Length == 0)
         {
             Debug.LogError("Waypoints not set!");
@@ -34,6 +40,18 @@ public class CowMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         SetNextWaypoint();
 
+    }
+    void UpgradeAnimalMove() 
+    {
+        AnimalMoveManager animalMoveManager = AnimalMoveManager.Instance;
+        if (gameObject.tag == "Cow")
+        {
+            waypoints = animalMoveManager.cowWaypoints.ToArray();
+        }
+        if (gameObject.tag == "Chicken")
+        {
+            waypoints = animalMoveManager.chickenWaypoints.ToArray();
+        }
     }
 
     private void Update()
@@ -46,6 +64,12 @@ public class CowMovement : MonoBehaviour
 
     private void MoveToWaypoint()
     {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("Waypoints not set!");
+            return;
+        }
+
         float rotationSpeed = 5f;
         Vector3 targetPosition = waypoints[currentWaypointIndex].position;
 
@@ -61,7 +85,13 @@ public class CowMovement : MonoBehaviour
 
         if (transform.position == targetPosition)
         {
-            if (waypoints[currentWaypointIndex].name== water || waypoints[currentWaypointIndex].name == hay)
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                Debug.LogError("Invalid waypoint index!");
+                return;
+            }
+
+            if (waypoints[currentWaypointIndex].name == water || waypoints[currentWaypointIndex].name == hay)
             {
                 StartCoroutine(StartEating());
             }
@@ -78,12 +108,12 @@ public class CowMovement : MonoBehaviour
 
     private void SetNextWaypoint()
     {
-        if (waypoints.Length == 0)
-        {
-            return;
-        }
+       
+        int randomIndex = Random.Range(0, waypoints.Length);
+        Transform nextWaypoint = waypoints[randomIndex];
 
-        currentWaypointIndex = Random.Range(0, waypoints.Length);
+        currentWaypointIndex = randomIndex;
+        waypoints[currentWaypointIndex] = nextWaypoint;
     }
 
     private IEnumerator StartEating()
@@ -97,6 +127,7 @@ public class CowMovement : MonoBehaviour
         animator.SetBool("Eat_b", false);
         animator.SetFloat("Speed_f", 0.3f);
         isEating = false;
+        UpgradeAnimalMove();
         SetNextWaypoint();
     }
     private IEnumerator StartIdle()

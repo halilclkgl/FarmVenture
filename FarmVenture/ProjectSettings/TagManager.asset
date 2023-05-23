@@ -24,6 +24,8 @@ TagManager:
   - Car
   - ChickenFeed
   - ChickenWater
+  - ChickenFloor
+  - CowFloor
   layers:
   - Default
   - TransparentFX
