@@ -40,7 +40,6 @@ public class ProgressBarChicken : MonoBehaviour
 
             yield return null;
         }
-
         // Ýlerleme tamamlandýðýnda yapýlacak iþlemler
         OnProgressBarFilled();
 
@@ -52,7 +51,6 @@ public class ProgressBarChicken : MonoBehaviour
         while (timer > 0f)
         {
             timer -= Time.deltaTime;
-
             // Ýlerleme çubuðunu güncelle
             float fillAmount = Mathf.Clamp01(timer / reverseDuration);
             progressBar.fillAmount = fillAmount;
@@ -76,8 +74,6 @@ public class ProgressBarChicken : MonoBehaviour
     private void OnProgressBarFilled()
     {
         StartCoroutine(EmptyProgressBar());
-
-      //  Debug.Log("Ýlerleme çubuðu tamamlandý!");
     }
 
 }

@@ -17,9 +17,6 @@ public class ChickenFeed : MonoBehaviour
         if (other.gameObject.tag == "Player" && !control)
         {
             control = true;
-
-            //StartCoroutine(FillCowHayBar());
-
             ProgressBarChicken.StartFillProgressBar(this);
         }
 
@@ -27,6 +24,5 @@ public class ChickenFeed : MonoBehaviour
     public void CollectEggFromChick()
     {
         eggControl.CollectEgg();
-
     }
 }

@@ -37,7 +37,7 @@ public class CowMovement : MonoBehaviour
             return;
         }
 
-        animator = GetComponent<Animator>();
+       // animator = GetComponent<Animator>();
         SetNextWaypoint();
 
     }
@@ -79,7 +79,7 @@ public class CowMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        float speed = animator.GetFloat("Speed_f");
+        float speed = .7f;
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
@@ -95,7 +95,7 @@ public class CowMovement : MonoBehaviour
             {
                 StartCoroutine(StartEating());
             }
-            else if (waypoints[currentWaypointIndex].CompareTag("Idle"))
+            else if (waypoints[currentWaypointIndex].name=="Idle")
             {
                 StartCoroutine(StartIdle());
             }
@@ -125,7 +125,7 @@ public class CowMovement : MonoBehaviour
         yield return new WaitForSeconds(eatDuration);
 
         animator.SetBool("Eat_b", false);
-        animator.SetFloat("Speed_f", 0.3f);
+        animator.SetFloat("Speed_f", .5f);
         isEating = false;
         UpgradeAnimalMove();
         SetNextWaypoint();
@@ -139,7 +139,7 @@ public class CowMovement : MonoBehaviour
         yield return new WaitForSeconds(eatDuration);
 
         animator.SetBool("Eat_b", false);
-        animator.SetFloat("Speed_f", 0.3f);
+        animator.SetFloat("Speed_f", .5f);
         isIdle = false;
         SetNextWaypoint();
     }

@@ -542,8 +542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopWaypoint: {fileID: 0}
   roadSide: {fileID: 0}
-  waitTime: 4
-  moveSpeed: 3
+  waitTime: 1
+  moveSpeed: 5
 --- !u!65 &-7873605788639281994
 BoxCollider:
   m_ObjectHideFlags: 0

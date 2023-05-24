@@ -352,6 +352,7 @@ MonoBehaviour:
   progressBar: {fileID: -3714930325446410451}
   harvest: {fileID: 0}
   field: {fileID: 7662528863484839937}
+  tomato: []
   image:
   - {fileID: 7077285157368568342}
   - {fileID: 5106668799744820450}
@@ -480,7 +481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3813916626507818861
 RectTransform:
   m_ObjectHideFlags: 0

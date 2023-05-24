@@ -26,6 +26,7 @@ TagManager:
   - ChickenWater
   - ChickenFloor
   - CowFloor
+  - EggHarvest
   layers:
   - Default
   - TransparentFX

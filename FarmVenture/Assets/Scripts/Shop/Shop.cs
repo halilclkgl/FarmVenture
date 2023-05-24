@@ -8,7 +8,7 @@ public class Shop : MonoBehaviour
     private ShopDatabase shopDatabase;
     [SerializeField] private MoneyManager moneyManager;
     public Harvest harvest; // Harvest sýnýfýna eriþmek için referans
-    private int a;
+  
     private bool isSelling; // Satýþ iþleminin devam edip etmediðini takip etmek için bir bayrak
 
     private void Start()

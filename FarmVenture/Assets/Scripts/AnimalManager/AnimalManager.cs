@@ -40,7 +40,6 @@ public class AnimalManager : MonoBehaviour
     private void Awake()
     {
       
-
         chickenCount = PlayerPrefs.GetInt("chickenCount", 0);
         chickenCount2 = PlayerPrefs.GetInt("chickenCount2", 0);
         CockCount = PlayerPrefs.GetInt("CockCount", 0);

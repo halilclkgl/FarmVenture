@@ -6,23 +6,23 @@ public class CarMovement : MonoBehaviour
 {
     public Transform shopWaypoint;
     public Transform roadSide;
-    public float waitTime = 3f;
+    public float waitTime = 1f;
     public float moveSpeed = 5f;
 
-    private bool reachedShopWaypoint = false;
+    //private bool reachedShopWaypoint = false;
     private void Awake()
     {
         shopWaypoint = GameObject.FindGameObjectWithTag("Way1").transform;
         roadSide = GameObject.FindGameObjectWithTag("Way2").transform;
-        StartCoroutine(deneme());
+        StartCoroutine(DriveRoutine());
     }
 
-    private IEnumerator deneme()
+    private IEnumerator DriveRoutine()
     {
 
         yield return StartCoroutine(MoveTowardsWaypoint(shopWaypoint.position));
 
-        reachedShopWaypoint = true;
+       // reachedShopWaypoint = true;
 
         yield return new WaitForSeconds(waitTime);
 
@@ -46,19 +46,13 @@ public class CarMovement : MonoBehaviour
     }
     public void MoveToDestination()
     {
-        StartCoroutine(deneme());
+        StartCoroutine(DriveRoutine());
 
     }
     private void MoveCoroutine()
     {
-        transform.position = new Vector3(13.3f, 0.61f, 22.71f);
+        transform.position = new Vector3(11.03f, 1f, 34.54f);
 
     }
-    private void Update()
-    {
-        if (reachedShopWaypoint)
-        {
-            // Yapýlacak iþlemler
-        }
-    }
+   
 }

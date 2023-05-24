@@ -78,7 +78,7 @@ public class Harvest : MonoBehaviour
                 ShopItem shopItem = shopDatabase.GetItemByName("Milk"); // "Milk" etiketine sahip shop nesnesini bul
                 if (shopItem != null)
                 {
-                  
+                    Debug.Log(shopItem.stock);
                     shopDatabase.UpdateStock("Milk", shopItem.stock + 1); // Stoku güncelle
                 }
             }
@@ -89,6 +89,15 @@ public class Harvest : MonoBehaviour
                 {
                    
                     shopDatabase.UpdateStock("Tomato", shopItem.stock + 1); // Stoku güncelle
+                }
+            }
+            else if (harvest.CompareTag("EggHarvest"))
+            {
+                ShopItem shopItem = shopDatabase.GetItemByName("Egg"); // "Vegetable" etiketine sahip shop nesnesini bul
+                if (shopItem != null)
+                {
+
+                    shopDatabase.UpdateStock("Egg", shopItem.stock + 1); // Stoku güncelle
                 }
             }
 

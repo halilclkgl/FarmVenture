@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EggControl : MonoBehaviour
 {
-    public int EggAmount; // Süt miktarý
+    public int EggAmount; // yumurta miktarý
     [SerializeField] private PlayerSo playerSo;
     public ChickenWater chickenWater;
     public ChickenFeed chickenFeed;

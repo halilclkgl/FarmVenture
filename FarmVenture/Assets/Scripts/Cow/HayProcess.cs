@@ -18,9 +18,6 @@ public class HayProcess : MonoBehaviour
         if (other.gameObject.tag == "Player" && !control)
         {
             control = true;
-        
-            //StartCoroutine(FillCowHayBar());
-             
             progressBarCow.StartFillProgressBar(this);
         }
        
@@ -28,7 +25,6 @@ public class HayProcess : MonoBehaviour
     public void CollectMilkFromCows()
     {
         MilkControl.CollectMilk();
-
     }
    
 }

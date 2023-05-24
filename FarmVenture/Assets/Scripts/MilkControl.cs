@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MilkControl : MonoBehaviour
 {
-
     public int milkAmount; // Süt miktarý
     [SerializeField] private PlayerSo playerSo;
     public HayProcess hayProcess;
@@ -15,7 +14,6 @@ public class MilkControl : MonoBehaviour
         if (hayProcess.hayCow && waterProcess.waterCow)
         {
             int cowCount = playerSo.cowCount;
-            Debug.Log("Cow Count: " + cowCount);
             cowCount -= milkAmount;
 
             if (cowCount >= 10)
@@ -23,7 +21,6 @@ public class MilkControl : MonoBehaviour
                 int stok = PlayerPrefs.GetInt("Stok");
                 stok += 10;
                 PlayerPrefs.SetInt("Stok", stok);
-                Debug.Log("10 adet süt eklendi");
                 ResetProcesses();
             }
             else if (cowCount < 10 && cowCount > 0)
@@ -31,7 +28,6 @@ public class MilkControl : MonoBehaviour
                 int stok = PlayerPrefs.GetInt("Stok");
                 stok += cowCount;
                 PlayerPrefs.SetInt("Stok", stok);
-                Debug.Log(cowCount + " adet süt eklendi");
                 ResetProcesses();
             }
         }

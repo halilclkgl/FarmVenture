@@ -16,6 +16,7 @@ public class FieldInteraction : MonoBehaviour
     public Harvest harvest;
 
     [SerializeField] private Field field;
+    public GameObject[] tomato;
     public Image[] image;
     private void Start()
     {
@@ -122,6 +123,10 @@ public class FieldInteraction : MonoBehaviour
             else if (currentState is WateringState)
             {
                 image[2].gameObject.SetActive(true);
+                for (int i = 0; i < tomato.Length; i++)
+                {
+                    tomato[i].gameObject.SetActive(true);
+                }
             }
             else if (currentState is HarvestableState)
             {
@@ -130,6 +135,10 @@ public class FieldInteraction : MonoBehaviour
             else if (currentState is HarvestingState)
             {
                 image[4].gameObject.SetActive(true);
+                for (int i = 0; i < tomato.Length; i++)
+                {
+                    tomato[i].gameObject.SetActive(false);
+                }
             }
         }
         if (currentState is HarvestingState)
