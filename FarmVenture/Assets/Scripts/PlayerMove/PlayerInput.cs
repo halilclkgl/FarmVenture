@@ -9,20 +9,19 @@ public class PlayerInput : MonoBehaviour
     public Animator animator;
     private bool isHorseMounted = false;
     CharacterMovement characterMovement;
-   [SerializeField] Transform player1;
     [SerializeField] Transform harvest;
-    
+    [SerializeField] PlayerSo playerSo;
     public void HorseUp() 
     {
         characterMovement = gameObject.GetComponent<CharacterMovement>();
 
         if (!isHorseMounted)
         {
-            characterMovement.moveSpeed = 5f;
+            characterMovement.HorseSpeed();
             harvest.transform.position = transform.TransformPoint(new Vector3(0, 2.8f, -1f));
             characterMovement.IsIdle = true;
             Vector3 rotation = transform.rotation.eulerAngles;
-            Debug.Log("bindi");
+            
             animator.SetBool("Horse", true);
             animator.SetInteger("Animation_int", 0);
             characterMovement.isHorseMounted = true;
@@ -36,12 +35,12 @@ public class PlayerInput : MonoBehaviour
 
         if ( isHorseMounted)
         {
-            characterMovement.moveSpeed = 1.5f;
+            characterMovement.HorseSpeed();
+            // characterMovement.MoveSpeed =playerSo.playerSpeed;
             harvest.transform.position = transform.TransformPoint(new Vector3(0, 1.47f, -1f));
             Vector3 rotation = transform.rotation.eulerAngles;
             characterMovement.IsIdle = false;
             characterMovement.isHorseMounted = false;
-            Debug.Log("indi");
             horse.SetActive(false);
             animator.SetBool("Horse", false);
             animator.SetFloat("H_Speed", 0f);

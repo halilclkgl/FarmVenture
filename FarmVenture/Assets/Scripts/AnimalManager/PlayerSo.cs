@@ -10,7 +10,7 @@ public class PlayerSo : ScriptableObject
     public float playerSpeed;
     public float horseSpeed;
     public float harvestSpeed;
-
+    public float playerNightSpeed;
     public int cowCount;
     public int cowAreaLimit = 10;
     public int chickenCount;
