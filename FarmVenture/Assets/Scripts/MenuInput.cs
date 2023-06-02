@@ -15,6 +15,12 @@ public class MenuInput : MonoBehaviour
     {
         // Karakter sýnýrýný ayarla
         farmNameInputField.characterLimit = characterLimit;
+        if (!(playerSo.playerName=="" )|| !(playerSo.playerName == ""))
+        {
+         
+            panel.SetActive(false);
+            panel2.SetActive(true);
+        }
     }
     public void OnSubmitButtonClicked()
     {

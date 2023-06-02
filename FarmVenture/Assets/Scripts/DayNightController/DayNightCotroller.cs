@@ -20,7 +20,7 @@ public class DayNightCotroller : MonoBehaviour
 
     private float[] rotationValues = {
         40f, 45f, 50f, 55f, 60f, 65f, 70f, 75f, 80f, 95f, 100f, 105f,
-        110f, 115f, 190f, 190f, 195f, 200f, 210f, 215f, 220f, 225f, 230f, 235f
+        110f, 115f, 160f, 170f, 195f, 200f, 210f, 215f, 220f, 225f, 230f, 235f
     };
     public CharacterMovement characterMovement;
     private int currentRotationIndex = 0;

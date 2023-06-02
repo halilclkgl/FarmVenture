@@ -16,7 +16,7 @@ public class GameArea :MonoBehaviour
     public Transform[] waypoints;
     private void Start()
     {
-        // PlayerPrefs.DeleteKey(areaID);
+         //PlayerPrefs.DeleteKey(areaID);
         int purchasedValue = PlayerPrefs.GetInt(areaID);
       
        

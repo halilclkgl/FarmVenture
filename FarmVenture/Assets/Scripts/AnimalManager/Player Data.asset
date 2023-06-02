@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dfb31a097932c42b5e56b2c0812ab3, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  playerName: 
-  farmName: 
+  playerName: halil
+  farmName: Halil
   playerSpeed: 2
   horseSpeed: 4
   harvestSpeed: 0.3
   playerNightSpeed: 1.5
-  cowCount: 21
+  cowCount: 23
   cowAreaLimit: 50
   chickenCount: 31
   chickenAreaLimit: 75
