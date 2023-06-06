@@ -7,7 +7,7 @@ public class CharacterMovement : MonoBehaviour, IJoystickObserver
     public DayNightCotroller dayNightCotroller;
     [SerializeField] private PlayerSo playerSo;
  
-    private float moveSpeed ;
+    [SerializeField]private float moveSpeed ;
     private CharacterController characterController;
     public Animator animator; 
     public Animator animatorH;

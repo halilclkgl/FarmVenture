@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: halil
   farmName: Halil
-  playerSpeed: 2
-  horseSpeed: 4
+  playerSpeed: 10.199995
+  horseSpeed: 12.199992
   harvestSpeed: 0.3
   playerNightSpeed: 1.5
-  cowCount: 23
+  playerHarvestCount: 7
+  playerHarvestSpeed: 0.3
+  cowCount: 6
   cowAreaLimit: 50
-  chickenCount: 31
+  chickenCount: 3
   chickenAreaLimit: 75

@@ -8,8 +8,8 @@ public class Milk : MonoBehaviour
     public Harvest harvest;
     public int stok;
     private bool isSelling = false;
-  
-   
+    public PlayerSo playerSo;
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -37,7 +37,7 @@ public class Milk : MonoBehaviour
     public void MilkHarvesting()
     {
 
-        if (harvest.harvestList.Count < 20 && stok > 0)
+        if (harvest.harvestList.Count < playerSo.playerHarvestCount && stok > 0)
         {
             PlayerPrefs.SetInt("Stok", stok);
             StartSelling();
@@ -60,7 +60,7 @@ public class Milk : MonoBehaviour
 
     private void SellHarvest()
     {
-        if (harvest.harvestList.Count < 20 && stok>0)
+        if (harvest.harvestList.Count < playerSo.playerHarvestCount && stok > 0)
         {
             stok--;
             PlayerPrefs.SetInt("Stok", stok);

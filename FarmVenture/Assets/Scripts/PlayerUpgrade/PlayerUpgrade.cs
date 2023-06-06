@@ -30,19 +30,23 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void PlayerSpeedUpgrade()
     {
-        if (moneyManager.CanAfford(playerSpeedUpgrade) && playerSo.playerSpeed < 10f)
+        if (moneyManager.CanAfford(playerSpeedUpgrade) && playerSo.playerSpeed < 8f)
         {
             playerSo.playerSpeed += 0.2f;
             playerSo.horseSpeed += 0.2f;
             moneyManager.SpendMoney(playerSpeedUpgrade);
         }
-        else if (playerSo.playerSpeed >= 10f) 
+        else if (playerSo.playerSpeed >= 8f) 
         {
             StartCoroutine(InsufficientLimit());
         }
         else
         {
             StartCoroutine(InsufficientMoney());
+        }
+        if (playerSo.playerHarvestSpeed>8) 
+        {
+            playerSo.playerHarvestSpeed = 8;
         }
 
     }

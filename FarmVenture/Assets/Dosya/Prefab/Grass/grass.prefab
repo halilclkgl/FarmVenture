@@ -734,6 +734,7 @@ MonoBehaviour:
   canvasObje: {fileID: 7430725747643627266}
   progressBar: {fileID: 425268894723671146}
   harvest: {fileID: 0}
+  playerSo: {fileID: 11400000, guid: 35e41d990b92efc44b8c1cfb8ca09ec4, type: 2}
   field: {fileID: 2576608897343599430}
   tomato:
   - {fileID: 1951161930514449226}

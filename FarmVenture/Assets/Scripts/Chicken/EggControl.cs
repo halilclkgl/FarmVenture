@@ -14,7 +14,7 @@ public class EggControl : MonoBehaviour
         if (chickenWater.waterChicken && chickenFeed.feedChicken)
         {
             int chickenCount = playerSo.chickenCount;
-            Debug.Log("Egg Count: " + chickenCount);
+  
             chickenCount -= EggAmount;
 
             if (chickenCount >= 15)

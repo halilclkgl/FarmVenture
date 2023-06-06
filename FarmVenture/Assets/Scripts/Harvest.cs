@@ -15,6 +15,7 @@ public class Harvest : MonoBehaviour
     public GameObject harvestPrefab4;
     public List<GameObject> harvestList = new List<GameObject>(); // Hasat prefablarýný saklamak için liste
     public Milk milk;
+    public PlayerSo playerSo;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class Harvest : MonoBehaviour
          //   milk.MilkCow();
         }
     }
-
+  
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Field"))
@@ -42,13 +43,14 @@ public class Harvest : MonoBehaviour
 
     public void PerformHarvest(int a)
     {
-        if (harvestList.Count < 20)
+        if (harvestList.Count < playerSo.playerHarvestCount)
         {
             if (a == 1)
             {
                 GameObject newHarvest = Instantiate(harvestPrefab, spawnPoint.position, spawnPoint.rotation);
                 newHarvest.transform.parent = harvestPrefab4.transform; // Harvest objesinin altýnda kalmasýný saðla
                 harvestList.Insert(0, newHarvest); // Listeye en baþa ekle
+        
             }
             else if (a == 2)
             {
@@ -66,6 +68,7 @@ public class Harvest : MonoBehaviour
             NewSpawnPoint();
         }
     }
+  
 
     public void StokHarvest()
     {
@@ -78,7 +81,7 @@ public class Harvest : MonoBehaviour
                 ShopItem shopItem = shopDatabase.GetItemByName("Milk"); // "Milk" etiketine sahip shop nesnesini bul
                 if (shopItem != null)
                 {
-                    Debug.Log(shopItem.stock);
+                   
                     shopDatabase.UpdateStock("Milk", shopItem.stock + 1); // Stoku güncelle
                 }
             }

@@ -30,6 +30,10 @@ public class MilkControl : MonoBehaviour
                 PlayerPrefs.SetInt("Stok", stok);
                 ResetProcesses();
             }
+            else 
+            {
+                ResetProcesses();
+            }
         }
     }
 

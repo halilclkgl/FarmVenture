@@ -28,7 +28,8 @@ public class GameArea :MonoBehaviour
         if (isUnlocked && gameObject.tag == "ChickenFloor")
         {
             AnimalMoveManager.Instance.AddChickenWaypoints(waypoints);
-            Debug.Log(waypoints);
+           
+
         }
         if (isUnlocked)
         {

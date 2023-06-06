@@ -14,7 +14,7 @@ public class FieldInteraction : MonoBehaviour
     public GameObject canvasObje;
     public ProgressBar progressBar;
     public Harvest harvest;
-
+    public PlayerSo playerSo;
     [SerializeField] private Field field;
     public GameObject[] tomato;
     public Image[] image;
@@ -42,7 +42,7 @@ public class FieldInteraction : MonoBehaviour
         }
         if (currentState is HarvestingState)
         {
-            if (harvest.harvestList.Count < 20)
+            if (harvest.harvestList.Count < playerSo.playerHarvestCount)
             {
                 harvest.PerformHarvest(1);
             }
